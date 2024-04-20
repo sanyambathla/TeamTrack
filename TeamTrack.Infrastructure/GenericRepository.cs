@@ -1,11 +1,10 @@
-﻿using Courseproject.Common.Interfaces;
-using Courseproject.Common.Model;
+﻿using TeamTrack.Common.Interfaces;
+using TeamTrack.Common.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System.Linq.Expressions;
-using TeamTrack.Common.Model;
 
-namespace Courseproject.Infrastructure;
+namespace TeamTrack.Infrastructure;
 
 public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
 {

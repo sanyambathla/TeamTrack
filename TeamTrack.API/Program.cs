@@ -1,9 +1,14 @@
-using Courseproject.Infrastructure;
+using TeamTrack.Business;
+using TeamTrack.Common.Interfaces;
+using TeamTrack.Common.Model;
+using TeamTrack.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+DIConfiguration.RegisterServices(builder.Services);
 builder.Services.AddDbContext<ApplicationDbContext>();
+builder.Services.AddScoped<IGenericRepository<Address>, GenericRepository<Address>>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

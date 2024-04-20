@@ -1,9 +1,9 @@
-﻿using Courseproject.Common.Model;
+﻿using TeamTrack.Common.Model;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Courseproject.Infrastructure;
+namespace TeamTrack.Infrastructure;
 
 public class ApplicationDbContext : IdentityDbContext<IdentityUser, IdentityRole, string>
 {

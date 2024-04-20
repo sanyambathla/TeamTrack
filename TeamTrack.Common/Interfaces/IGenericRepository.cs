@@ -1,8 +1,7 @@
-﻿using Courseproject.Common.Model;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 using TeamTrack.Common.Model;
 
-namespace Courseproject.Common.Interfaces;
+namespace TeamTrack.Common.Interfaces;
 
 public interface IGenericRepository<T> where T : BaseEntity
 {

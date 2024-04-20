@@ -1,6 +1,6 @@
-﻿using TeamTrack.Common.Model;
+﻿
 
-namespace Courseproject.Common.Model;
+namespace TeamTrack.Common.Model;
 
 public class Address : BaseEntity
 {
