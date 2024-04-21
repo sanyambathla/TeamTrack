@@ -2,7 +2,9 @@
 using TeamTrack.Common.Dtos.Address;
 using TeamTrack.Common.Dtos.Employee;
 using TeamTrack.Common.Dtos.Job;
+using TeamTrack.Common.Dtos.Teams;
 using TeamTrack.Common.Model;
+using TeamTrack.Dtos.Teams;
 
 namespace TeamTrack.Business;
 
@@ -36,5 +38,12 @@ public class DtoEntityMapperProfile : Profile
             .ForMember(dest => dest.Address, opt => opt.Ignore());
 
         CreateMap<Employee, EmployeeList>();
+
+        CreateMap<TeamCreate, Team>()
+            .ForMember(dest => dest.Id, opt => opt.Ignore())
+            .ForMember(dest => dest.Employees, opt => opt.Ignore());
+        CreateMap<TeamUpdate, Team>()
+            .ForMember(dest => dest.Employees, opt => opt.Ignore());
+        CreateMap<Team, TeamGet>();
     }
 }

@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TeamTrack.Common.Dtos.Employee;
 
-namespace TeamTrack.Common.Dtos.Employee
-{
-    internal class TeamGet
-    {
-    }
-}
+namespace TeamTrack.Dtos.Teams;
+
+public record TeamGet(int Id, string Name, List<EmployeeList> Employees);
