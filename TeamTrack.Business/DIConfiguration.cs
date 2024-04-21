@@ -1,6 +1,7 @@
 ﻿using TeamTrack.Business.Services;
 using TeamTrack.Common.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
+using Courseproject.Business.Services;
 
 namespace TeamTrack.Business;
 
@@ -11,5 +12,6 @@ public class DIConfiguration
         services.AddAutoMapper(typeof(DtoEntityMapperProfile));
         services.AddScoped<IAddressService, AddressService>();
         services.AddScoped<IJobService, JobService>();
+        services.AddScoped<IEmployeeService, EmployeeService>();
     }
 }
