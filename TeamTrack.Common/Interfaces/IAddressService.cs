@@ -1,4 +1,4 @@
-﻿using TeamTrack.Common.Dtos;
+﻿using TeamTrack.Common.Dtos.Address;
 
 namespace TeamTrack.Common.Interfaces;
 

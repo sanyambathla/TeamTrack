@@ -1,7 +1,7 @@
-﻿using TeamTrack.Common.Dtos;
-using TeamTrack.Common.Interfaces;
+﻿using TeamTrack.Common.Interfaces;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using TeamTrack.Common.Dtos.Address;
 
 namespace TeamTrack.API.Controllers;
 

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using TeamTrack.Common.Dtos;
+using TeamTrack.Common.Dtos.Address;
 using TeamTrack.Common.Interfaces;
 using TeamTrack.Common.Model;
 
