@@ -1,3 +1,4 @@
+using TeamTrack.API;
 using TeamTrack.Business;
 using TeamTrack.Common.Interfaces;
 using TeamTrack.Common.Model;
@@ -33,6 +34,7 @@ using (var scope = app.Services.CreateScope())
     dbContext.Database.EnsureCreated();
 }
 
+app.UseMiddleware<ExceptionMiddleware>();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

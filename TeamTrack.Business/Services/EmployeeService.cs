@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using System.Linq.Expressions;
+using TeamTrack.Business.Validation;
 using TeamTrack.Common.Dtos.Employee;
 using TeamTrack.Common.Interfaces;
 using TeamTrack.Common.Model;
@@ -12,18 +14,25 @@ public class EmployeeService : IEmployeeService
     public IGenericRepository<Job> JobRepository { get; }
     public IGenericRepository<Address> AddressRepository { get; }
     private IMapper Mapper { get; }
+    private EmployeeCreateValidator EmployeeCreateValidator { get; }
+    private EmployeeUpdateValidator EmployeeUpdateValidator { get; }
 
     public EmployeeService(IGenericRepository<Employee> employeeRepository, IGenericRepository<Job> jobRepository,
-        IGenericRepository<Address> addressRepository, IMapper mapper)
+        IGenericRepository<Address> addressRepository, IMapper mapper,
+        EmployeeCreateValidator employeeCreateValidator, EmployeeUpdateValidator employeeUpdateValidator)
     {
         EmployeeRepository = employeeRepository;
         JobRepository = jobRepository;
         AddressRepository = addressRepository;
         Mapper = mapper;
+        EmployeeCreateValidator = employeeCreateValidator;
+        EmployeeUpdateValidator = employeeUpdateValidator;
     }
 
     public async Task<int> CreateEmployeeAsync(EmployeeCreate employeeCreate)
     {
+        await EmployeeCreateValidator.ValidateAndThrowAsync(employeeCreate);
+
         var address = await AddressRepository.GetByIdAsync(employeeCreate.AddressId);
         var job = await JobRepository.GetByIdAsync(employeeCreate.JobId);
         var entity = Mapper.Map<Employee>(employeeCreate);
@@ -70,6 +79,8 @@ public class EmployeeService : IEmployeeService
 
     public async Task UpdateEmployeeAsync(EmployeeUpdate employeeUpdate)
     {
+        await EmployeeUpdateValidator.ValidateAsync(employeeUpdate);
+
         var address = await AddressRepository.GetByIdAsync(employeeUpdate.AddressId);
         var job = await JobRepository.GetByIdAsync(employeeUpdate.JobId);
         var entity = Mapper.Map<Employee>(employeeUpdate);
@@ -79,3 +90,4 @@ public class EmployeeService : IEmployeeService
         await EmployeeRepository.SaveChangesAsync();
     }
 }
+
